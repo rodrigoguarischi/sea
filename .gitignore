@@ -1,0 +1,4 @@
+aux_files/*
+imputed_genotypes/*
+processed_files/*
+raw_files/*
