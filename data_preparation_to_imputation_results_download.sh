@@ -2,8 +2,8 @@
 
 # Process SEA array data (Perlegen): Data preparation and imputation
 # Project detail: https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000349.v1.p1
-# Modified by Rodrigo Guarischi Sousa on Fev 9, 2022
-# version 0.1
+# Modified by Rodrigo Guarischi Sousa on Fev 14, 2022
+# version 0.2
 
 ### PREAMBLE ###################################################################################### 
 
@@ -123,12 +123,27 @@ picard LiftoverVcf \
   R=${aux_files}/hg38.sorted.fa.gz \
   REJECT=${sea_processed_files}/SEA_Phase2.ucsc_chr.liftover_hg38_rejected.vcf.gz
 
+# Imputation servers expect chromosomes encoded without prefix (e.g. 20) when imputing 
+# an array on genome build hg19 (hg38 is the opposite). 
+# Fix this encoding on VCFs the header
+zcat ${sea_processed_files}/SEA_Phase2.ucsc_chr.liftover_hg19.vcf.gz | \
+  grep "^#" | \
+  perl -pe "s/contig=<ID=chr/contig=<ID=/" > ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf
+
+# Fix this encoding on VCF body and append it to the file
+zcat ${sea_processed_files}/SEA_Phase2.ucsc_chr.liftover_hg19.vcf.gz | \
+  grep -v "^#" | \
+  perl -pe "s/^chr//" >> ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf
+
+# Compress VCF file and creates tbi index for it
+bgzip ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf
+tabix -p vcf ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf.gz
+
 # Split both VCF files by chromosome (necessary for imputation)
-split_vcf_by_chr ${sea_processed_files}/SEA_Phase2.ucsc_chr.liftover_hg19.vcf.gz
+split_vcf_by_chr ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf.gz
 split_vcf_by_chr ${sea_processed_files}/SEA_Phase2.ucsc_chr.liftover_hg38.vcf.gz
 
-
-## Download imputed results from topmed imputation server
+## Download imputed results based on TopMed reference panel from Topmed imputation server (from hg38 liftover)
 imputation_results_topmed="${base_dir}/imputed_genotypes/topmed";
 
 # Create output dir and enters it
@@ -148,65 +163,22 @@ curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/492253/48b9481701b
 # Logs
 curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/492254/10831caaa29eae3d6696b35103d7782fb0d8d0e060544cb5abc520753ec0b966 | bash
 
+## Download imputed results based on HRC from Michigan Imputation Server (from hg38 liftover)
+imputation_results_michigan="${base_dir}/imputed_genotypes/michigan_hrc";
 
-##### OLD PRE PROCESSING #######
+# Create output dir and enters it
+mkdir -p "${imputation_results_michigan}"
 
-# ## Data prepation
-# data_preparation_folder="${base_dir}/data_prepation"
-# data_preparation_tools_folder="${base_dir}/data_prepation/tools";
-# mkdir -p ${data_preparation_folder}
-# mkdir -p ${data_preparation_tools_folder}
-# cd ${data_preparation_tools_folder}
-# 
-# # Download Data Preparation tool (https://imputationserver.readthedocs.io/en/latest/prepare-your-data/)
-# wget http://www.well.ox.ac.uk/~wrayner/tools/HRC-1000G-check-bim-v4.2.7.zip
-# wget ftp://ngs.sanger.ac.uk/production/hrc/HRC.r1-1/HRC.r1-1.GRCh37.wgs.mac5.sites.tab.gz
-# 
-# # Extract files
-# unzip HRC-1000G-check-bim-v4.2.7.zip
-# gunzip HRC.r1-1.GRCh37.wgs.mac5.sites.tab.gz
-# 
-# # Output folder for prepared files
-# sea_prepared_files_folder="${base_dir}/data_prepation/sea_prepared_files";
-# mkdir -p ${sea_prepared_files_folder}
-# cd ${sea_prepared_files_folder}
-# 
-# # Load plink module
-# module load plink
-# 
-# # Convert ped/map to bed
-# plink --file ${sea_input_files_local}/SEA_Phase2 --make-bed --out ${sea_prepared_files_folder}/SEA_Phase2.prepared
-# 
-# # Create a frequency file
-# plink --freq --bfile ${sea_prepared_files_folder}/SEA_Phase2.prepared --out ${sea_prepared_files_folder}/SEA_Phase2.prepared.freq
-# 
-# # Execute script
-# perl ${data_preparation_tools_folder}/HRC-1000G-check-bim.pl \
-#   -b ${sea_prepared_files_folder}/SEA_Phase2.prepared*.bim \
-#   -f ${sea_prepared_files_folder}/SEA_Phase2.prepared*.frq \
-#   -h
-# 
-# sh ${sea_prepared_files_folder}/Run-plink.sh
-#
+cd ${imputation_results_michigan};
 
-# Use checkVCF to ensure that the VCF files are valid 
+# QC Report
+# NOT AVAILABLE
 
-# python ${base_dir}/data_prepation/tools/checkVCF.py \
-#   -r ${base_dir}/data_prepation/tools/hs37d5.fa \
-#   -o ${base_dir}/SEA_Phase2.checkVCF.out \
-#   ${base_dir}/SEA_Phase2.vcf.gz 
-# 
-# python ${base_dir}/data_prepation/tools/checkVCF.py \
-#   -r ${base_dir}/tmp/hg17.fa \
-#   -o ${base_dir}/tmp/SEA_Phase2.hg17_checkVCF.out \
-#   ${base_dir}/SEA_Phase2.vcf.gz 
+# QC Statistics
+curl -sL https://imputation.sph.umich.edu/get/2561281/3f62258a4149126497bf83e82b302787f2d69be6edb6a9d26986f7f0b9136779 | bash
 
-# python ${base_dir}/data_prepation/tools/checkVCF.py \
-#   -r ${base_dir}/tmp/human_b36_male.fa \
-#   -o ${base_dir}/tmp/SEA_Phase2.human_b36_male.out \
-#   ${base_dir}/SEA_Phase2.vcf.gz 
+# Imputation Results
+curl -sL https://imputation.sph.umich.edu/get/2561283/2ced7c9f53b305674708f06426f20306985194b2b865f3b300ff1d1b9d96d27d | bash
 
-# python ${base_dir}/data_prepation/tools/checkVCF.py \
-#   -r ${base_dir}/tmp/human_g1k_v37.fasta \
-#   -o ${base_dir}/tmp/SEA_Phase2.human_g1k_v37_checkVCF.out \
-#   ${base_dir}/SEA_Phase2.vcf.gz 
+# Logs
+curl -sL https://imputation.sph.umich.edu/get/2561284/4478f5a8798cd2a1274d20a530a66118e4a2b7e183648c1906d787931d628b0b | bash
