@@ -2,3 +2,10 @@ aux_files/*
 imputed_genotypes/*
 processed_files/*
 raw_files/*
+exports/*
+apply_grs/*
+TOBEDELETED/*
+data_preparation_to_imputation/*
+tools/*
+table_assembly/*
+.vscode/*
