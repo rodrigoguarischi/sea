@@ -59,9 +59,34 @@ mkdir -p ${sea_processed_files};
 # Convert ped/map files to VCF files (vcf-iid for using only individual id)
 plink \
   --recode vcf-iid \
+  --keep-allele-order \
   --ped ${sea_input_files_local}/SEA_Phase2.ped \
   --map ${sea_input_files_local}/SEA_Phase2.map \
   --out ${sea_processed_files}/SEA_Phase2
+
+# plink \
+#   --recode vcf-iid \
+#   01 \
+#   --ped ${sea_input_files_local}/SEA_Phase2.ped \
+#   --map ${sea_input_files_local}/SEA_Phase2.map \
+#   --out ${sea_processed_files}/TOBEDELETED/SEA_Phase2_01
+
+
+
+data_preparation_folder="${base_dir}/data_preparation";
+
+mkdir -p "${data_preparation_folder}";
+
+# wget "https://www.well.ox.ac.uk/~wrayner/tools/HRC-1000G-check-bim-v4.3.0.zip"
+# wget "ftp://ngs.sanger.ac.uk/production/hrc/HRC.r1-1/HRC.r1-1.GRCh37.wgs.mac5.sites.tab.gz"
+
+# curl 'https://bravo.sph.umich.edu/freeze5/hg38/download/all' -H 'Accept-Encoding: gzip, deflate, br' -H 'Cookie: _ga=GA1.2.645902790.1647474047; _gid=GA1.2.202243235.1647474047; remember_token="rodrigoguarischi@gmail.com|909ced69655877963deb6629019b538b23bceaa3e84cd5852d476b90791b8d6280347700271bcb59dd2d2aa97f36b25a65d00bbd2686a2d1595a83e6edc67536"; _gat_gtag_UA_73910830_2=1' --compressed > bravo-dbsnp-all.vcf.gz
+
+perl HRC-1000G-check-bim.pl \
+  -b ${data_preparation_folder}/sea/86679/NHLBI/SEA_Herrington/phs000349v1/p1/genotype/phg000121v1/genotype-calls-matrixfmt/SEA_Phase2.bim \
+  -f ${data_preparation_folder}/sea/86679/NHLBI/SEA_Herrington/phs000349v1/p1/genotype/phg000121v1/genotype-qc/SEA_Phase2.frq \
+  -r ${data_preparation_folder}/HRC.r1-1.GRCh37.wgs.mac5.sites.tab \
+  -h 
 
 ## Liftover
 # SEA chips are based on NCBI36/hg18, in order to run imputation VCF files need to be 
@@ -143,25 +168,30 @@ tabix -p vcf ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf.g
 split_vcf_by_chr ${sea_processed_files}/SEA_Phase2.chr_no_prefix.liftover_hg19.vcf.gz
 split_vcf_by_chr ${sea_processed_files}/SEA_Phase2.ucsc_chr.liftover_hg38.vcf.gz
 
-## Download imputed results based on TopMed reference panel from Topmed imputation server (from hg38 liftover)
-imputation_results_topmed="${base_dir}/imputed_genotypes/topmed";
+# # Quick analysis using VCF from Elias
+# mkdir -p ${sea_processed_files}/starting_from_elias_vcf
+# ln -s /labs/tassimes/elyas/SEA/SEA_Phase2.1kb37.vcf.gz
+# split_vcf_by_chr ${sea_processed_files}/
 
-# Create output dir and enters it
-mkdir -p "${imputation_results_topmed}"
+# cd /labs/tassimes/rodrigoguarischi/projects/sea/imputed_genotypes/topmed/hg19_elias
+# curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/513702/0ab98a638f52fb3581ca7776f48a22cac5963407f7b005f64a6c87ce7954fd40 | bash
+# curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/513706/48ede0615fac0294afcb1a942571d17e1e8389b869d7fb3e9983342975626b30 | bash
+# curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/513709/1ca02aec9d221396789c1608be0b125efafaaa5b23722bb795790dddb92965ab | bash
+# curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/513708/b29d98f9db47e72e866014dc6f042c796a5e256b5b4c2d2cdfb8cd123c262a60 | bash
 
-cd ${imputation_results_topmed};
+### Download imputed results based on TopMed reference panel from Topmed imputation server
 
 # QC Report
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/492247/1474900a0a45cccb1b532538d415e11314ad8e702be879bb943f63dd20072b2e | bash
+
 
 # QC Statistics
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/492251/f923edd679e2005ac784b889f2371ab4d9ff72da9e033a12c70e1369b64f9780 | bash
+
 
 # Imputation Results
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/492253/48b9481701b499bd9f74da3704c39ea0f82aa3137cba2f70905eae1b06d1eb55 | bash
+
 
 # Logs
-curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/492254/10831caaa29eae3d6696b35103d7782fb0d8d0e060544cb5abc520753ec0b966 | bash
+
 
 ## Download imputed results based on HRC from Michigan Imputation Server (from hg38 liftover)
 imputation_results_michigan="${base_dir}/imputed_genotypes/michigan_hrc";
@@ -182,3 +212,89 @@ curl -sL https://imputation.sph.umich.edu/get/2561283/2ced7c9f53b305674708f06426
 
 # Logs
 curl -sL https://imputation.sph.umich.edu/get/2561284/4478f5a8798cd2a1274d20a530a66118e4a2b7e183648c1906d787931d628b0b | bash
+
+
+------------
+
+### Download imputed results
+
+## Based on TopMed reference panel on Topmed imputation server from hg19 liftover files
+imputation_results_topmed_hg19="${base_dir}/imputed_genotypes/topmed/hg19";
+
+# Create output dir and enters it
+mkdir -p "${imputation_results_topmed_hg19}"
+
+cd ${imputation_results_topmed_hg19};
+
+# QC Report
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501575/7398c2908412b5e3d28850d39a49232d73d27917a72c8788ccb520bb2a7c3a3e | bash
+
+# QC Statistics
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501579/7c3e5123ba2bcdd748f54d29c37cc237650a368cd240140cf30d0d26d205cd0e | bash
+
+# Imputation Results
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501581/26237f3572887f902b9bb65ddbdaaa84d30e57b61bb45bce5bea3d4c9edc0a3d | bash
+
+# Logs
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501582/654dcdddc5b36d1f546bc2e3bd112da679f293111e7882956330d4c8c5161e50 | bash
+
+## Based on TopMed reference panel on Topmed imputation server from hg38 liftover files
+imputation_results_topmed_hg38="${base_dir}/imputed_genotypes/topmed/hg38";
+
+# Create output dir and enters it
+mkdir -p "${imputation_results_topmed_hg38}"
+
+cd ${imputation_results_topmed_hg38};
+
+# QC Report
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501553/ff6ff158e3799e09fc6e78b8f42c999e4ac328f13e1a8950c372912021165311 | bash
+
+# QC Statistics
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501557/698a99ac891f7e9842067dbdde8f3d036a3c7899fc22e2765e9f2fe27c3b3b54 | bash
+
+# Imputation Results
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501559/f76aab9ca988dced290a7a299256376a80b6934d554945e46b9c04f11ff5a5cf | bash
+
+# Logs
+curl -sL https://imputation.biodatacatalyst.nhlbi.nih.gov/get/501560/0dc88e01837f98116cfd3704cc9bc0083063542ddf9708145254773d72db1efe | bash
+
+## Based on HRC reference panel on Michigan Imputation Server from hg19 liftover files
+imputation_results_mis_hg19="${base_dir}/imputed_genotypes/michigan_hrc/hg19";
+
+# Create output dir and enters it
+mkdir -p "${imputation_results_mis_hg19}"
+
+cd ${imputation_results_mis_hg19};
+
+# QC Report
+curl -sL https://imputationserver.sph.umich.edu/get/2603173/f8305f2c1c078ba1bb7509d64330b29cae993f81eec368fb7bc21c19764ee36a | bash
+
+# QC Statistics
+curl -sL https://imputationserver.sph.umich.edu/get/2603177/b27567d73d7d7ba8549dc89470a145b675d1b8e1b945ec83a9918080b0da7584 | bash
+
+# Imputation Results
+curl -sL https://imputationserver.sph.umich.edu/get/2603179/f3014e0faedf9f4c81d96559f56843841f9a1b2d1ae3803a7243a8e90fa0a070 | bash
+
+# Logs
+curl -sL https://imputationserver.sph.umich.edu/get/2603180/860cdb25905cc3d61a7c1a5f6116848ffc60829b5c6e56655702ef955e7bc1af | bash
+
+
+## Based on HRC reference panel on Michigan Imputation Server from hg38 liftover files
+imputation_results_mis_hg38="${base_dir}/imputed_genotypes/michigan_hrc/hg38";
+
+# Create output dir and enters it
+mkdir -p "${imputation_results_mis_hg38}"
+
+cd ${imputation_results_mis_hg38};
+
+# QC Report
+curl -sL https://imputationserver.sph.umich.edu/get/2603152/999ba11604b1683dcc911ac4b1f41c1a0998d1d24ec9578a97b22e0d3e53dc6a | bash
+
+# QC Statistics
+curl -sL https://imputationserver.sph.umich.edu/get/2603156/47da827ec172e031ab9f3d7552019b02c9490aece12640fa3441b95a8bc82ef4 | bash
+
+# Imputation Results
+curl -sL https://imputationserver.sph.umich.edu/get/2603158/fa810c821278639306b1ff0b6264e5577f849c739b69dd45d600b92c7a91c43f | bash
+
+# Logs
+curl -sL https://imputationserver.sph.umich.edu/get/2603159/1a249e3bc59bfea4515c1f318f2e5259f403195b715b430f733068874fa7a9c8 | bash
