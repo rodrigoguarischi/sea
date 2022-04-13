@@ -17,7 +17,7 @@ Study Design:
  - Post-mortem quantitative assessment of lesions in their aorta and coronary arteries:
    - % surface area with **fatty streaks** and **fibrous plaques**
 
-### SEA ([dbGAP link](https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000349.v1.p1&phv=159038&phd=3526&pha=&pht=2191&phvf=&phdf=&phaf=&phtf=&dssp=1&consent=&temp=1))
+### SEA 
  
 SEA study genotyped a subset of PDAY cohort
 
@@ -32,7 +32,8 @@ Study Design:
  - Genotyped with **Perlegen Sciences** microarrays
    - One of the first genome-wide arrays available
    - 106,285 SNPs on array (66,166 QC passed<sup>1</sup>)
- - Data available on dbGAP (project phs000349.v1.p1)
+ - Data available on dbGAP, project ID: phs000349.v1.p1 [link](https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000349.v1.p1&phv=159038&phd=3526&pha=&pht=2191&phvf=&phdf=&phaf=&phtf=&dssp=1&consent=&temp=1))
+
 
 <sup>1.</sup>[Salfati E, Nandkeolyar S, et al. Susceptibility Loci for Clinical Coronary Artery Disease and Subclinical Coronary Atherosclerosis Throughout the Life-Course. Circ Cardiovasc Genet. 2015; PMID: 26417035](https://doi.org/10.1161/CIRCGENETICS.114.001071)
 
@@ -52,6 +53,6 @@ Availability of **improved reference panels** (TOPMed r2) and more **advanced PR
 
 Workflow to process data consisted on the following scripts:
 
- 1. (data_preparation_to_imputation.ipynb)
- 1. (imputed_data_qc.ipynb)
- 1. (apply_pgs_and_plot_odds_ratios.ipynb)
+ 1. [data_preparation_to_imputation.ipynb](./data_preparation_to_imputation.ipynb)
+ 1. [imputed_data_qc.ipynb](./imputed_data_qc.ipynb)
+ 1. [apply_pgs_and_plot_odds_ratios.ipynb](./apply_pgs_and_plot_odds_ratios.ipynb)
