@@ -51,8 +51,9 @@ Availability of **improved reference panels** (TOPMed r2) and more **advanced PR
 
 ## Data processing
 
-Workflow to process data consisted on the following scripts:
+Data processing consisted of the following steps/workflows:
 
  1. [data_preparation_to_imputation.ipynb](./data_preparation_to_imputation.ipynb)
+ 1. [imputed_data_download.ipynb](./imputed_data_download.ipynb)
  1. [imputed_data_qc.ipynb](./imputed_data_qc.ipynb)
  1. [apply_pgs_and_plot_odds_ratios.ipynb](./apply_pgs_and_plot_odds_ratios.ipynb)
