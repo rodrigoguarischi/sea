@@ -1,6 +1,6 @@
 aux_files/*
 imputed_genotypes/*
-processed_files/*
+processed_data/*
 raw_files/*
 exports/*
 apply_grs/*
