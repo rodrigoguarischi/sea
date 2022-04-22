@@ -32,4 +32,4 @@ picard LiftoverVcf \
   I=chr${current_chr}.dose.vcf.gz \
   O=./liftover_hg19/chr${current_chr}.dose.liftover_hg19.vcf.gz \
   REJECT=./liftover_hg19/chr${current_chr}.dose.liftover_hg19.rejected.vcf.gz \
-  MAX_RECORDS_IN_RAM=100000
+  MAX_RECORDS_IN_RAM=50000
