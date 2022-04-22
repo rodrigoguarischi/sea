@@ -53,8 +53,10 @@ Availability of **improved reference panels** (TOPMed r2) and more **advanced PR
 
 Data processing consisted of the following steps/workflows:
 
- 1. [data_preparation_to_imputation.ipynb](./data_preparation_to_imputation.ipynb)
- 1. [imputed_data_download.ipynb](./imputed_data_download.ipynb)
- 1. [imputed_data_qc.ipynb](./imputed_data_qc.ipynb)
- 1. [liftover_topmed_hg38_to_hg19.ipynb](./liftover_topmed_hg38_to_hg19.ipynb) (sbatch slurm script [liftover_topmed_hg38_to_hg19.sh](./liftover_topmed_hg38_to_hg19.sh))
- 1. [apply_pgs_and_plot_odds_ratios.ipynb](./apply_pgs_and_plot_odds_ratios.ipynb)
+1. [data_preparation_to_imputation.ipynb](./data_preparation_to_imputation.ipynb)
+1. [imputed_data_download.ipynb](./imputed_data_download.ipynb)
+1. [imputed_data_qc.ipynb](./imputed_data_qc.ipynb)
+1. [liftover_topmed_hg38_to_hg19.ipynb](./liftover_topmed_hg38_to_hg19.ipynb)
+   1. Sbatch slurm script: [liftover_topmed_hg38_to_hg19.sh](./liftover_topmed_hg38_to_hg19.sh)
+   1. Sbatch slurm script: [liftover_topmed_post_processing_vcf](./liftover_topmed_post_processing_vcf)
+1. [apply_pgs_and_plot_odds_ratios.ipynb](./apply_pgs_and_plot_odds_ratios.ipynb)
