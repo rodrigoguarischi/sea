@@ -5,17 +5,58 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=8gb
 #SBATCH --time=12:00:00
-#SBATCH --output=/labs/tassimes/rodrigoguarischi/projects/sea/imputed_data/topmed/liftover_hg19/chr%a.dose.liftover_hg19.no_chr_prefix-job%A.out
-#SBATCH --error=/labs/tassimes/rodrigoguarischi/projects/sea/imputed_data/topmed/liftover_hg19/chr%a.dose.liftover_hg19.no_chr_prefix-job%A.log
+#SBATCH --output=./chr%a.dose.liftover_hg19.no_chr_prefix-job%A.out
+#SBATCH --error=./chr%a.dose.liftover_hg19.no_chr_prefix-job%A.log
 #SBATCH --array=1-23%8
 
+# Perform adjustments on VCF file to adequate to expected format during GRS calculation
+# Modified by Rodrigo Guarischi Sousa on May 2, 2022
+# version 0.2
+
 # NOTE: Limit to 8 parallel jobs to avoid going over the limit on disk quota 
+
+### PREAMBLE ###################################################################################### 
+
+# Settings for environment
 
 # Load required modules
 module load tabix
 
+### FUNCTIONS #####################################################################################
+
+### DATA ANALYSIS #################################################################################
+
+while getopts ":r:" opt; do
+    case ${opt} in
+        r)
+            race=${OPTARG}
+            ;;
+        h)
+            usage
+            ;;
+        *)
+	    echo -e "\n ERROR: Invalid parameters -${OPTARG}" >&2;
+            usage
+            ;;
+        esac
+    done
+    shift $((OPTIND-1))
+
+
+# Checks if an race option has being provided
+if [ -z "${race}" ]; then
+    echo -e "\n ERROR: A race must be provided and equals to 'whites' OR 'blacks'" >&2;
+    usage
+fi
+
+# Checks if an race option is valid (equals 'whites' OR 'blacks')
+if [ "${race}" != "whites" ] && [ "${race}" != "blacks" ]; then
+    echo -e "\n ERROR: A race must be provided and equals to 'whites' OR 'blacks'" >&2;
+    usage
+fi
+
 # Define root directory for processing
-cd "/labs/tassimes/rodrigoguarischi/projects/sea/imputed_data/topmed/liftover_hg19/"
+cd "/labs/tassimes/rodrigoguarischi/projects/sea/imputed_data/topmed/${race}/liftover_hg19/"
 
 # Get current chromosome ID from slurm array (When array=23, process X chromosome)
 if [ ${SLURM_ARRAY_TASK_ID} -eq 23 ]; then
