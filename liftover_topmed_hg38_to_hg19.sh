@@ -5,8 +5,8 @@
 #SBATCH --cpus-per-task=16
 #SBATCH --mem-per-cpu=80gb
 #SBATCH --time=12:00:00
-#SBATCH --output=./liftover_hg19/chr%a.dose.liftover_hg19-%A.out
-#SBATCH --error=./liftover_hg19/chr%a.dose.liftover_hg19-%A.log
+#SBATCH --output=/tmp/chr%a.dose.liftover_hg19-%A.out
+#SBATCH --error=/tmp/chr%a.dose.liftover_hg19-%A.log
 #SBATCH --array=1-23
 
 # Launch picard to liftover hg38 to hg19 for all VCF files with imputation data
@@ -82,3 +82,7 @@ picard LiftoverVcf \
   O=./liftover_hg19/chr${current_chr}.dose.liftover_hg19.vcf.gz \
   REJECT=./liftover_hg19/chr${current_chr}.dose.liftover_hg19.rejected.vcf.gz \
   MAX_RECORDS_IN_RAM=50000
+
+# Copy log and out files from /tmp to liftover folder
+cp /tmp/chr${SLURM_ARRAY_TASK_ID}.dose.liftover_hg19-${SLURM_ARRAY_JOB_ID}.out ./liftover_hg19/
+cp /tmp/chr${SLURM_ARRAY_TASK_ID}.dose.liftover_hg19-${SLURM_ARRAY_JOB_ID}.log ./liftover_hg19/

@@ -5,12 +5,12 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem-per-cpu=8gb
 #SBATCH --time=12:00:00
-#SBATCH --output=./chr%a.dose.liftover_hg19.no_chr_prefix-job%A.out
-#SBATCH --error=./chr%a.dose.liftover_hg19.no_chr_prefix-job%A.log
+#SBATCH --output=/tmp/chr%a.dose.liftover_hg19.no_chr_prefix-job%A.out
+#SBATCH --error=/tmp/chr%a.dose.liftover_hg19.no_chr_prefix-job%A.log
 #SBATCH --array=1-23%8
 
 # Perform adjustments on VCF file to adequate to expected format during GRS calculation
-# Modified by Rodrigo Guarischi Sousa on May 2, 2022
+# Modified by Rodrigo Guarischi Sousa on May 3, 2022
 # version 0.2
 
 # NOTE: Limit to 8 parallel jobs to avoid going over the limit on disk quota 
@@ -83,4 +83,8 @@ zcat ${vcf_file} | \
   perl -pe "s/^chr//" >> ${output_vcf_filename}
 
 # Compress files as bzip
-bgzip ${output_vcf_filename};
+bgzip ${output_vcf_filename}
+
+# Copy log and out files from /tmp to liftover folder
+cp /tmp/chr${SLURM_ARRAY_TASK_ID}.dose.liftover_hg19.no_chr_prefix-job${SLURM_ARRAY_JOB_ID}.out .
+cp /tmp/chr${SLURM_ARRAY_TASK_ID}.dose.liftover_hg19.no_chr_prefix-job${SLURM_ARRAY_JOB_ID}.log .
