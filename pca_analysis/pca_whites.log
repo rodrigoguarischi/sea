@@ -1,0 +1,34 @@
+PLINK v2.00a2.3LM 64-bit Intel (24 Jan 2020)
+Options in effect:
+  --bfile ./data_preparation_to_imputation/hg19_liftover/SEA_Phase2.sex_recoded.hg19_liftover
+  --extract ./pca_analysis/pc_qc.prune.in
+  --keep ./pca_analysis/subject_ids_whites.txt
+  --out ./pca_analysis/pca_whites
+  --pca 20
+
+Hostname: smsh11dsu-srcf-d15-36.scg.stanford.edu
+Working directory: /oak/stanford/scg/lab_tassimes/rodrigoguarischi/projects/sea
+Start time: Tue May 10 19:09:58 2022
+
+Random number seed: 1652234998
+515883 MiB RAM detected; reserving 257941 MiB for main workspace.
+Allocated 14523 MiB successfully, after larger attempt(s) failed.
+Using up to 64 threads (change this with --threads).
+1068 samples (220 females, 848 males; 1068 founders) loaded from
+./data_preparation_to_imputation/hg19_liftover/SEA_Phase2.sex_recoded.hg19_liftover.fam.
+106248 variants loaded from
+./data_preparation_to_imputation/hg19_liftover/SEA_Phase2.sex_recoded.hg19_liftover.bim.
+Note: No phenotype data present.
+--extract: 20174 variants remaining.
+--keep: 564 samples remaining.
+564 samples (128 females, 436 males; 564 founders) remaining after main
+filters.
+Calculating allele frequencies... done.
+20174 variants remaining after main filters.
+Constructing GRM: done.
+Correcting for missingness... done.
+Extracting eigenvalues and eigenvectors... done.
+--pca: Eigenvectors written to ./pca_analysis/pca_whites.eigenvec , and
+eigenvalues written to ./pca_analysis/pca_whites.eigenval .
+
+End time: Tue May 10 19:09:58 2022

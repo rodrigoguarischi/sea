@@ -1,0 +1,42 @@
+PLINK v2.00a2.3LM 64-bit Intel (24 Jan 2020)
+Options in effect:
+  --autosome
+  --bfile ./data_preparation_to_imputation/hg19_liftover/SEA_Phase2.sex_recoded.hg19_liftover
+  --exclude bed0 ./aux_files/exclude_regions.txt
+  --geno 0.05
+  --hwe 10e-15 midp
+  --indep-pairwise 1000 50 0.05
+  --maf 0.01
+  --mind 0.1
+  --out ./pca_analysis/pc_qc
+
+Hostname: smsh11dsu-srcf-d15-36.scg.stanford.edu
+Working directory: /oak/stanford/scg/lab_tassimes/rodrigoguarischi/projects/sea
+Start time: Tue May 10 19:09:54 2022
+
+Random number seed: 1652234994
+515883 MiB RAM detected; reserving 257941 MiB for main workspace.
+Allocated 14523 MiB successfully, after larger attempt(s) failed.
+Using up to 64 threads (change this with --threads).
+1068 samples (220 females, 848 males; 1068 founders) loaded from
+./data_preparation_to_imputation/hg19_liftover/SEA_Phase2.sex_recoded.hg19_liftover.fam.
+103083 out of 106248 variants loaded from
+./data_preparation_to_imputation/hg19_liftover/SEA_Phase2.sex_recoded.hg19_liftover.bim.
+Note: No phenotype data present.
+--exclude bed0: 861 variants excluded.
+Calculating sample missingness rates... done.
+0 samples removed due to missing genotype data (--mind).
+1068 samples (220 females, 848 males; 1068 founders) remaining after main
+filters.
+Calculating allele frequencies... done.
+--geno: 862 variants removed due to missing genotype data.
+--hwe midp: 3827 variants removed due to Hardy-Weinberg exact test (founders
+only).
+8985 variants removed due to allele frequency threshold(s)
+(--maf/--max-maf/--mac/--max-mac).
+88548 variants remaining after main filters.
+--indep-pairwise (12 compute threads): 68374/88548 variants removed.
+Variant lists written to ./pca_analysis/pc_qc.prune.in and
+./pca_analysis/pc_qc.prune.out .
+
+End time: Tue May 10 19:09:54 2022
