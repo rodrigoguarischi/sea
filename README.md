@@ -59,5 +59,6 @@ Data processing consisted of the following steps/workflows:
 1. [liftover_topmed_hg38_to_hg19.ipynb](./liftover_topmed_hg38_to_hg19.ipynb)
    1. Sbatch slurm script: [liftover_topmed_hg38_to_hg19.sh](./liftover_topmed_hg38_to_hg19.sh)
    1. Sbatch slurm script: [liftover_topmed_post_processing_vcf](./liftover_topmed_post_processing_vcf.sh)
+1. [pca_analysis.ipynb](./pca_analysis.ipynb)
 1. [apply_grs.ipynb](./apply_grs.ipynb)
 1. [calculate_grs_odds_ratios_and_create_plots.ipynb](./calculate_grs_odds_ratios_and_create_plots.ipynb)
