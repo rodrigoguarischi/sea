@@ -33,9 +33,32 @@ Study Design:
    - One of the first genome-wide arrays available
    - 106,285 SNPs on array (66,166 QC passed<sup>1</sup>)
  - Data available on dbGAP, project ID: phs000349.v1.p1 [[link](https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000349.v1.p1&phv=159038&phd=3526&pha=&pht=2191&phvf=&phdf=&phaf=&phtf=&dssp=1&consent=&temp=1)]
-
-
+ 
 <sup>1.</sup>[Salfati E, Nandkeolyar S, et al. Susceptibility Loci for Clinical Coronary Artery Disease and Subclinical Coronary Atherosclerosis Throughout the Life-Course. Circ Cardiovasc Genet. 2015; PMID: 26417035](https://doi.org/10.1161/CIRCGENETICS.114.001071)
+
+ ### Demographic and clinical characteristics
+
+ Demographic and clinical characteristics of our study sample are provided in the table below (stratified by race)
+
+ The matching on age, sex, and race as well as a case-control ratio of 1 to 2 are consistent with sampling procedures adopted by SEA. 
+ Mean BMI as well as the mean and median proportion of surface area of the RCA involved with raised lesions was also similar between groups.  
+
+ |                                               | White subjects | Black subjects |
+ | --------------------------------------------- | :------------: | :------------: |
+ | Number                                        | 564            | 504            | 
+ | Sex (n, % of total)                           |                |                | 
+ | &nbsp;&nbsp;&nbsp;&nbsp;Male                  | 436 (77.3%)    | 412 (81.7%)    |
+ | &nbsp;&nbsp;&nbsp;&nbsp;Female                | 128 (22.7%)    | 92 (18.3%)     |
+ | Age (mean, SD)                                | 26.7 (5.0)     | 27.5 (4.3)     |
+ | BMI (mean, SD)                                | 25.3 (5.0)     | 25.1 (5.1)     |
+ | Raised lesions in the RCA (n, percent)        |                |                |                                
+ | &nbsp;&nbsp;&nbsp;&nbsp;Yes (cases)           | 181 (32.1%)    | 165 (32.7%)    |
+ | &nbsp;&nbsp;&nbsp;&nbsp;No (controls)         | 383 (67.9%)    | 339 (67.3%)    |
+ | % Surface area involved among cases           |                |                |
+ | &nbsp;&nbsp;&nbsp;&nbsp;Mean (percent, SD)    | 12.7% (17.4%)  | 12.9% (18.4%)  |
+ | &nbsp;&nbsp;&nbsp;&nbsp;Median (percent, IQR) | 5.0% (17.0)    | 4.3% (16.3)    |
+
+Abbreviations: n = number, RCA, Right Coronary Artery; SD, Standard Deviation; IQR, Interquartile Range. 
 
 ## Hypothesis and Aims
 
