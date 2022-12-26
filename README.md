@@ -68,9 +68,28 @@ Availability of **improved reference panels** (TOPMed r2) and more **advanced PR
 
  1. To **assess improvements** on the imputation quality of SEA data using the **new TOPMed reference panel**
  1. Evaluate **metaGRS** on predicting raised lesions and compare its performance with the approach of 49 SNPs used previously
-    - Expand this analysis by comparing the two PRSs to the recently developed (and not yet published) multi-ancestry PRS developed **within VA with MVP data**
  1. Because TOPMed and metaGRS are more ethnically diverse, we also would like to **assess the performance of PRSs for the black subpopulation within SEA.**
  1. **Extend analyses to causal risk factor analyses** such as hypertension and LDL whose PRSs have also substantially improved over the last 5 years
+
+## Polygenic Risk Scores tested
+
+We assessed one PGS for CAD and eight for traditional risk factors and highly related biomarkers showing the strongest correlation with their respective trait from recent large-scale multi-ancestry discovery and validation studies of PGSs (table below). We also recalculated and normalized the 49-SNP PGS derived from genome wide significant hits for CAD as of 2013 that we previously tested.
+
+| GRS (links to [pgscatalog.org](https://www.pgscatalog.org/)) | Trait abbreviation | Source GWAS Ancrestry | Source GWAS N individuals     | Development method               | Predictive performance in White (or mostly white)<sup>*</sup> | Predictive performance in Black<sup>*</sup> | Total Variants | Variants Used | Coverage |
+| ------------------------------------------------------------ | :----------------: | :-------------------: | :---------------------------: | :------------------------------: | :-----------------------------------------------------------: | :-----------------------------------------: | :------------: | :-----------: | :------: | 
+| [PGS000889](https://www.pgscatalog.org/score/PGS000889/)     | LDL                | Multi-ancestry        | 1,088,526                     | Pruning and Thresholding (P+T)   | R<sup>2</sup>: 0.13 to 0.158                                  | R<sup>2</sup>: 0.067 to 0.173               | 9,009          | 8,749         | 97.11%   |
+| [PGS000018](https://www.pgscatalog.org/score/PGS000018/)     | CAD                | Multi-ancestry        | 382,026 + 3,000<sup>**</sup>  | metaGRS                          | HR: 1.706                                                     |                                             | 1,745,179      | 1,725,980     | 98.90%   |
+| [PGS002133](https://www.pgscatalog.org/score/PGS002133/)     | Fat %              | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3256 to 0.3456                                   | partial-r: 0.153 to 0.1577                  | 995,419        | 991,179       | 99.57%   |
+| [PGS002161](https://www.pgscatalog.org/score/PGS002161/)     | BMI                | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3595 to 0.3698                                   | partial-r: 0.1573 to 0.2104                 | 990,022        | 985,849       | 99.58%   |
+| [PGS000667](https://www.pgscatalog.org/score/PGS000667/)     | Lp(a)              | European              | 48,333                        | Significant variants             | HR: 1.06 to 1.45                                              | R<sup>2</sup>: 0.038                        | 43             | 41            | 95.35%   |
+| [PGS001351](https://www.pgscatalog.org/score/PGS001351/)     | Ins                | European              | 151,013 + 95,002<sup>**</sup> | PRS-CS                           | R<sup>2</sup>: 0.095                                          | R<sup>2</sup>: 0.028                        | 1,025,098      | 1,020,204     | 99.52%   |
+| [PGS002197](https://www.pgscatalog.org/score/PGS002197/)     | Trig               | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3494 to 0.3655                                   | partial-r: 0.1521 to 0.1776                 | 731,035        | 728,113       | 99.60%   |
+| [PGS002026](https://www.pgscatalog.org/score/PGS002026/)     | T2D                | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.0862 to 0.1304                                   | partial-r: 0.0806 to 0.1001                 | 830,783        | 827,256       | 99.58%   |
+| [PGS002009](https://www.pgscatalog.org/score/PGS002009/)     | SBP                | European              | 391,124                       | Penalized regression (bigstatsr) | partial-r: 0.2197 to 0.2702                                   | partial-r: 0.104 to 0.1046                  | 68,449         | 68,141        | 99.55%   |
+
+<sup>*</sup>Predictive performance in the reference study
+
+<sup>**</sup>Cohort sizes of Source of Variant Associations and Score Development, respectively
 
 ## Data processing
 
