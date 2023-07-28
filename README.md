@@ -108,8 +108,9 @@ Data processing consisted of the following steps/workflows:
 
 ## Publication
 
-This project was published at Circulation: Genomic and Precision Medicine. 
-Check out our paper at: [https://doi.org/10.1161/CIRCGEN.122.004047]
+This project was published in Circulation: Genomic and Precision Medicine. 
+
+Check out our paper at: [https://doi.org/10.1161/CIRCGEN.122.004047](https://doi.org/10.1161/CIRCGEN.122.004047)
 
 ## Citation
 
