@@ -2,7 +2,7 @@
 
 ## History
 
-### PDAY (https://doi.org/10.1001/jama.281.8.727)
+### PDAY
 
 PDAY was a quantitative, post-mortem study published in Fev/99 on JAMA
 
@@ -16,6 +16,8 @@ Study Design:
    - Men (76%) and Women (24%)
  - Post-mortem quantitative assessment of lesions in their aorta and coronary arteries:
    - % surface area with **fatty streaks** and **fibrous plaques**
+
+Link to publication: <a href="https://doi.org/10.1001/jama.281.8.727" target="_blank">Strong JP, Malcom GT, McMahan CA, et al. Prevalence and Extent of Atherosclerosis in Adolescents and Young Adults: Implications for Prevention From the Pathobiological Determinants of Atherosclerosis in Youth Study. JAMA. 1999;281(8):727–735. doi:10.1001/jama.281.8.727</a>
 
 ### SEA 
  
@@ -32,9 +34,9 @@ Study Design:
  - Genotyped with **Perlegen Sciences** microarrays
    - One of the first genome-wide arrays available
    - 106,285 SNPs on array (66,166 QC passed<sup>1</sup>)
- - Data available on dbGAP, project ID: phs000349.v1.p1 [[link](https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000349.v1.p1&phv=159038&phd=3526&pha=&pht=2191&phvf=&phdf=&phaf=&phtf=&dssp=1&consent=&temp=1)]
- 
-<sup>1.</sup>[Salfati E, Nandkeolyar S, et al. Susceptibility Loci for Clinical Coronary Artery Disease and Subclinical Coronary Atherosclerosis Throughout the Life-Course. Circ Cardiovasc Genet. 2015; PMID: 26417035](https://doi.org/10.1161/CIRCGENETICS.114.001071)
+ - Data available on dbGAP, project ID: phs000349.v1.p1 [<a href="https://www.ncbi.nlm.nih.gov/projects/gap/cgi-bin/study.cgi?study_id=phs000349.v1.p1" target="_blank">link</a>]
+
+<sup>1.</sup><a href="https://doi.org/10.1161/CIRCGENETICS.114.001071" target="_blank">Salfati E, Nandkeolyar S, et al. Susceptibility Loci for Clinical Coronary Artery Disease and Subclinical Coronary Atherosclerosis Throughout the Life-Course. Circ Cardiovasc Genet. 2015; PMID: 26417035</a>
 
  ### Demographic and clinical characteristics
 
@@ -75,17 +77,17 @@ Availability of **improved reference panels** (TOPMed r2) and more **advanced PR
 
 We assessed one PGS for CAD and eight for traditional risk factors and highly related biomarkers showing the strongest correlation with their respective trait from recent large-scale multi-ancestry discovery and validation studies of PGSs (table below). We also recalculated and normalized the 49-SNP PGS derived from genome wide significant hits for CAD as of 2013 that we previously tested.
 
-| GRS (links to [pgscatalog.org](https://www.pgscatalog.org/))                                                                                                | Trait abbreviation | Source GWAS Ancrestry | Source GWAS N individuals     | Development method               | Predictive performance in White subjects (or mostly white)<sup>*</sup> | Predictive performance in Black subjects<sup>*</sup> | Total Variants | Variants Used | Coverage |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: | :-------------------: | :---------------------------: | :------------------------------: | :--------------------------------------------------------------------: | :--------------------------------------------------: | :------------: | :-----------: | :------: | 
-| PGS003356<br>[ [info](https://www.pgscatalog.org/score/PGS003356/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS003356/ScoringFiles/) ] | CAD                | Multi-ancestry        | 1,165,690                     | LDpred                           | HR: 1.61                                                               | Not Available                                        | 2,324,683      | 2,311,334     | 99.43%   |
-| PGS000889<br>[ [info](https://www.pgscatalog.org/score/PGS000889/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000889/ScoringFiles/) ] | LDL                | Multi-ancestry        | 1,088,526                     | Pruning and Thresholding (P+T)   | R<sup>2</sup>: 0.13 to 0.158                                           | R<sup>2</sup>: 0.067 to 0.173                        | 9,009          | 8,749         | 97.11%   |
-| PGS002133<br>[ [info](https://www.pgscatalog.org/score/PGS002133/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002133/ScoringFiles/) ] | Fat %              | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3256 to 0.3456                                            | partial-r: 0.153 to 0.1577                           | 995,419        | 991,179       | 99.57%   |
-| PGS002161<br>[ [info](https://www.pgscatalog.org/score/PGS002161/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002161/ScoringFiles/) ] | BMI                | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3595 to 0.3698                                            | partial-r: 0.1573 to 0.2104                          | 990,022        | 985,849       | 99.58%   |
-| PGS000667<br>[ [info](https://www.pgscatalog.org/score/PGS000667/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000667/ScoringFiles/) ] | Lp(a)              | European              | 48,333                        | Significant variants             | HR: 1.06 to 1.45                                                       | R<sup>2</sup>: 0.038                                 | 43             | 41            | 95.35%   |
-| PGS001351<br>[ [info](https://www.pgscatalog.org/score/PGS001351/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001351/ScoringFiles/) ] | Ins                | European              | 151,013 + 95,002<sup>**</sup> | PRS-CS                           | R<sup>2</sup>: 0.095                                                   | R<sup>2</sup>: 0.028                                 | 1,025,098      | 1,020,204     | 99.52%   |
-| PGS002197<br>[ [info](https://www.pgscatalog.org/score/PGS002197/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002197/ScoringFiles/) ] | Trig               | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3494 to 0.3655                                            | partial-r: 0.1521 to 0.1776                          | 731,035        | 728,113       | 99.60%   |
-| PGS002026<br>[ [info](https://www.pgscatalog.org/score/PGS002026/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002026/ScoringFiles/) ] | T2D                | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.0862 to 0.1304                                            | partial-r: 0.0806 to 0.1001                          | 830,783        | 827,256       | 99.58%   |
-| PGS002009<br>[ [info](https://www.pgscatalog.org/score/PGS002009/) / [files](https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002009/ScoringFiles/) ] | SBP                | European              | 391,124                       | Penalized regression (bigstatsr) | partial-r: 0.2197 to 0.2702                                            | partial-r: 0.104 to 0.1046                           | 68,449         | 68,141        | 99.55%   |
+| GRS<br>links to <a href="https://www.pgscatalog.org/" target="_blank">pgscatalog.org</a>                                                                                                                          | Trait abbreviation | Source GWAS Ancrestry | Source GWAS N individuals     | Development method               | Predictive performance in White subjects (or mostly white)<sup>*</sup> | Predictive performance in Black subjects<sup>*</sup> | Total Variants | Variants Used | Coverage |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------: | :-------------------: | :---------------------------: | :------------------------------: | :--------------------------------------------------------------------: | :--------------------------------------------------: | :------------: | :-----------: | :------: | 
+| PGS003356<br>[ <a href="https://www.pgscatalog.org/score/PGS003356/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS003356/ScoringFiles/" target="_blank">files</a> ] | CAD                | Multi-ancestry        | 1,165,690                     | LDpred                           | HR: 1.61                                                               | Not Available                                        | 2,324,683      | 2,311,334     | 99.43%   |
+| PGS000889<br>[ <a href="https://www.pgscatalog.org/score/PGS000889/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000889/ScoringFiles/" target="_blank">files</a> ] | LDL                | Multi-ancestry        | 1,088,526                     | Pruning and Thresholding (P+T)   | R<sup>2</sup>: 0.13 to 0.158                                           | R<sup>2</sup>: 0.067 to 0.173                        | 9,009          | 8,749         | 97.11%   |
+| PGS002133<br>[ <a href="https://www.pgscatalog.org/score/PGS002133/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002133/ScoringFiles/" target="_blank">files</a> ] | Fat %              | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3256 to 0.3456                                            | partial-r: 0.153 to 0.1577                           | 995,419        | 991,179       | 99.57%   |
+| PGS002161<br>[ <a href="https://www.pgscatalog.org/score/PGS002161/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002161/ScoringFiles/" target="_blank">files</a> ] | BMI                | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3595 to 0.3698                                            | partial-r: 0.1573 to 0.2104                          | 990,022        | 985,849       | 99.58%   |
+| PGS000667<br>[ <a href="https://www.pgscatalog.org/score/PGS000667/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS000667/ScoringFiles/" target="_blank">files</a> ] | Lp(a)              | European              | 48,333                        | Significant variants             | HR: 1.06 to 1.45                                                       | R<sup>2</sup>: 0.038                                 | 43             | 41            | 95.35%   |
+| PGS001351<br>[ <a href="https://www.pgscatalog.org/score/PGS001351/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS001351/ScoringFiles/" target="_blank">files</a> ] | Ins                | European              | 151,013 + 95,002<sup>**</sup> | PRS-CS                           | R<sup>2</sup>: 0.095                                                   | R<sup>2</sup>: 0.028                                 | 1,025,098      | 1,020,204     | 99.52%   |
+| PGS002197<br>[ <a href="https://www.pgscatalog.org/score/PGS002197/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002197/ScoringFiles/" target="_blank">files</a> ] | Trig               | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.3494 to 0.3655                                            | partial-r: 0.1521 to 0.1776                          | 731,035        | 728,113       | 99.60%   |
+| PGS002026<br>[ <a href="https://www.pgscatalog.org/score/PGS002026/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002026/ScoringFiles/" target="_blank">files</a> ] | T2D                | European              | 391,124                       | LDpred2 (bigsnpr)                | partial-r: 0.0862 to 0.1304                                            | partial-r: 0.0806 to 0.1001                          | 830,783        | 827,256       | 99.58%   |
+| PGS002009<br>[ <a href="https://www.pgscatalog.org/score/PGS002009/" target="_blank">info</a> / <a href="https://ftp.ebi.ac.uk/pub/databases/spot/pgs/scores/PGS002009/ScoringFiles/" target="_blank">files</a> ] | SBP                | European              | 391,124                       | Penalized regression (bigstatsr) | partial-r: 0.2197 to 0.2702                                            | partial-r: 0.104 to 0.1046                           | 68,449         | 68,141        | 99.55%   |
 
 <sup>*</sup>Predictive performance in the reference study
 
@@ -110,7 +112,7 @@ Data processing consisted of the following steps/workflows:
 
 This project was published in Circulation: Genomic and Precision Medicine. 
 
-Check out our paper at: [https://doi.org/10.1161/CIRCGEN.122.004047](https://doi.org/10.1161/CIRCGEN.122.004047)
+Check out our paper at: <a href="https://doi.org/10.1161/CIRCGEN.122.004047" target="_blank">https://doi.org/10.1161/CIRCGEN.122.004047</a>
 
 ## Citation
 
