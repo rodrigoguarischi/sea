@@ -105,3 +105,19 @@ Data processing consisted of the following steps/workflows:
 1. [pca_analysis.ipynb](./pca_analysis.ipynb)
 1. [apply_grs.ipynb](./apply_grs.ipynb)
 1. [calculate_grs_odds_ratios_and_create_plots.ipynb](./calculate_grs_odds_ratios_and_create_plots.ipynb)
+
+## Citation
+
+If you use this results/scripts, please cite it as below.
+
+```
+@article{doi:10.1161/CIRCGEN.122.004047,
+author = {Rodrigo Guarischi-Sousa  and Elias Salfati  and Pik Fang Kho  and Kruthika R. Iyer  and Austin T. Hilliard  and David M. Herrington  and Philip S. Tsao  and Shoa L. Clarke  and Themistocles L. Assimes},
+title = {Contemporary Polygenic Scores of Low-Density Lipoprotein Cholesterol and Coronary Artery Disease Predict Coronary Atherosclerosis in Adolescents and Young Adults},
+journal = {Circulation: Genomic and Precision Medicine},
+year = {2023},
+doi = {10.1161/CIRCGEN.122.004047},
+URL = {https://www.ahajournals.org/doi/abs/10.1161/CIRCGEN.122.004047},
+eprint = {https://www.ahajournals.org/doi/pdf/10.1161/CIRCGEN.122.004047}
+}
+```
