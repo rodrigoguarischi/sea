@@ -108,15 +108,15 @@ Data processing consisted of the following steps/workflows:
 
 ## Citation
 
-If you use this results/scripts, please cite it as below.
+If you use these results/scripts, please cite us as below (*Cite this repository* option is also available on the right side bar).
 
 ```
-@article{doi:10.1161/CIRCGEN.122.004047,
-author = {Rodrigo Guarischi-Sousa  and Elias Salfati  and Pik Fang Kho  and Kruthika R. Iyer  and Austin T. Hilliard  and David M. Herrington  and Philip S. Tsao  and Shoa L. Clarke  and Themistocles L. Assimes},
-title = {Contemporary Polygenic Scores of Low-Density Lipoprotein Cholesterol and Coronary Artery Disease Predict Coronary Atherosclerosis in Adolescents and Young Adults},
-journal = {Circulation: Genomic and Precision Medicine},
-year = {2023},
+@article{Guarischi-Sousa_Contemporary_Polygenic_Scores_2023,
+author = {Guarischi-Sousa, Rodrigo and Salfati, Elias and Kho, Pik Fang and Iyer, Kruthika Raman and Hilliard, Austin and David, Herrington and Tsao, Philip S. and Clarke, Shoa L. and Assimes, Themistocles L.},
 doi = {10.1161/CIRCGEN.122.004047},
+journal = {Circulation: Genomic and Precision Medicine},
+title = {{Contemporary Polygenic Scores of Low-Density Lipoprotein Cholesterol and Coronary Artery Disease Predict Coronary Atherosclerosis in Adolescents and Young Adults}},
+year = {2023},
 URL = {https://www.ahajournals.org/doi/abs/10.1161/CIRCGEN.122.004047},
 eprint = {https://www.ahajournals.org/doi/pdf/10.1161/CIRCGEN.122.004047}
 }
