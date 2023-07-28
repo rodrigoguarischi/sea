@@ -106,6 +106,11 @@ Data processing consisted of the following steps/workflows:
 1. [apply_grs.ipynb](./apply_grs.ipynb)
 1. [calculate_grs_odds_ratios_and_create_plots.ipynb](./calculate_grs_odds_ratios_and_create_plots.ipynb)
 
+## Publication
+
+This project was published at Circulation: Genomic and Precision Medicine. 
+Check out our paper at: [https://doi.org/10.1161/CIRCGEN.122.004047]
+
 ## Citation
 
 If you use these results/scripts, please cite us as below (*Cite this repository* option is also available on the right side bar).
